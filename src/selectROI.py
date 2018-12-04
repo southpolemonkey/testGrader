@@ -3,7 +3,7 @@ import numpy as np
 
 if __name__ == '__main__':
     # Read image
-    im = cv2.imread("images/12.png")
+    im = cv2.imread("images/sample.png")
 
     im = cv2.resize(im,(0,0), fx=0.5, fy=0.5)
     fromCenter = False
