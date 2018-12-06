@@ -9,7 +9,6 @@ ANSWER_KEY = {0: 0, 1: 1, 2: 1, 3: 0, 4: 0, 5: 1, 6: 2, 7: 2, 8: 1, 9: 3, 10: 0,
 ANSWER = {0: 'A', 1: 'B', 2: 'C', 3: "D"}
 
 
-#TODO:
 def get_answer(image, thresh):
     # find contours in the threshold image, then initialize
     # the list of contours that correspond to questions
@@ -76,7 +75,6 @@ def get_answer(image, thresh):
 
         # check to see if the bubbled answer is correct
         if k == bubbled[1]:
-            print(f'No.{q+1} correct')
             color = (0, 255, 0)
             correct += 1
             f.write(f'No.{q+1} correct \n')

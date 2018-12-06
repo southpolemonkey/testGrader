@@ -1,4 +1,3 @@
-from keras.datasets import mnist
 # import matplotlib.pyplot as plt
 import argparse
 import cv2
@@ -31,12 +30,12 @@ numpy.random.seed(seed)
 # multi perceptron model
 # flatten 28*28 images to a 784 vector for each image
 num_pixels = X_train.shape[1] * X_train.shape[2]
-X_train = X_train.reshape(X_train.shape[0], num_pixels).astype('float32')
-X_test = X_test.reshape(X_test.shape[0], num_pixels).astype('float32')
+# X_train = X_train.reshape(X_train.shape[0], num_pixels).astype('float32')
+# X_test = X_test.reshape(X_test.shape[0], num_pixels).astype('float32')
 
 # simple cnn model
-# X_train = X_train.reshape(X_train.shape[0], 1, 28, 28).astype('float32')
-# X_test = X_test.reshape(X_test.shape[0], 1, 28, 28).astype('float32')
+X_train = X_train.reshape(X_train.shape[0], 1, 28, 28).astype('float32')
+X_test = X_test.reshape(X_test.shape[0], 1, 28, 28).astype('float32')
 
 # normalize inputs from 0-255 to 0-1
 X_train = X_train / 255
@@ -75,10 +74,14 @@ def cnn_model():
 
 
 # build the model
-# model = cnn_model()
-model = perceptrons_model()
+model = cnn_model()
+# model = perceptrons_model()
 # Fit the model
 model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10, batch_size=200, verbose=2)
+# model.save('perceptrons_model.h5')
+model.save('cnn_model.h5')
+print("Save model successfully")
+
 # Final evaluation of the model
 scores = model.evaluate(X_test, y_test, verbose=0)
 print("Baseline Error: %.2f%%" % (100-scores[1]*100))
@@ -110,8 +113,8 @@ cells = [np.hsplit(thresh, 9)]
 x = np.array(cells)
 
 # the shape of flattened matrix is (9, 784), which stands for 9 arrays and length of each array is 784
-student_number = x.reshape(-1, 784).astype(np.float32)
-# student_number = x.reshape(9, 1, 28, 28).astype(np.float32)
+# student_number = x.reshape(-1, 784).astype(np.float32)
+student_number = x.reshape(9, 1, 28, 28).astype(np.float32)
 
 # output the predicted class for my sample
 scores = model.predict(student_number, verbose=0)

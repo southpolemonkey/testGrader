@@ -142,7 +142,7 @@ for (q, i) in enumerate(np.arange(0, len(questionCnts), 4)):
 
     # check to see if the bubbled answer is correct
     if k == bubbled[1]:
-        print(f'No.{q+1} correct')
+        # print(f'No.{q+1} correct')
         color = (0, 255, 0)
         correct += 1
     # print(f'Question{q+1}: {ANSWER[bubbled[1]]}')

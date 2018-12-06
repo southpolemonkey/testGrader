@@ -23,7 +23,7 @@ test = x[:,50:100].reshape(-1,400).astype(np.float32) # Size = (2500,400)
 
 # Create labels for train and test data
 k = np.arange(10)
-train_labels = np.repeat(k,250)[:,np.newaxis]
+train_labels = np.repeat(k,250)[:, np.newaxis]
 test_labels = train_labels.copy()
 
 # Initiate kNN, train the data, then test it with test data for k=1
